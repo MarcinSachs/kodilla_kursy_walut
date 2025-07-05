@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block result %}
+{% if result_cost is defined and result_cost is not none %}
+<div class="result">
+    <p>Koszt zakupu {{ amount }} {{ icon }} {{ currency }} wynosi:</p>
+    <p class="cost">{{ "%.2f"|format(result_cost) }} PLN</p>
+</div>
+{% else %}
+<div class="result error">
+    <p>Wystąpił błąd lub nie podano danych. Spróbuj ponownie.</p>
+    <a href="{{ url_for('calculator') }}" class="button-back">Powrót do kalkulatora</a>
+</div>
+{% endif %}
+{% endblock %}
